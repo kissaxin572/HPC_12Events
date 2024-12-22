@@ -37,12 +37,9 @@ def process_files(file_paths):
                 # 检查行中是否包含任意一个性能计数器名称
                 if any(counter in line for counter in [
                     'branch-instructions', 'branch-misses', 'bus-cycles',
-                    'cache-misses', 'cache-references', 'cpu-cycles',
-                    'instructions', 'ref-cycles', 'L1-dcache-load-misses',
-                    'L1-dcache-loads', 'L1-dcache-stores', 'L1-icache-load-misses',
-                    'LLC-loads', 'LLC-stores', 'branch-load-misses',
-                    'dTLB-load-misses', 'dTLB-loads', 'dTLB-store-misses',
-                    'dTLB-stores', 'iTLB-load-misses'
+                    'cache-misses', 'cpu-cycles', 'instructions', 
+                    'L1-dcache-loads', 'L1-dcache-stores', 'LLC-loads',  
+                    'LLC-stores', 'dTLB-load-misses', 'iTLB-load-misses'
                 ]):
                     value = extract_counter_value(line)  # 提取计数器值
                     counter_name = line.split()[1]  # 获取计数器名称
@@ -76,12 +73,9 @@ def main():
     # 定义要处理的性能计数器特征列表
     features = [
         'branch-instructions', 'branch-misses', 'bus-cycles',
-        'cache-misses', 'cache-references', 'cpu-cycles',
-        'instructions', 'ref-cycles', 'L1-dcache-load-misses',
-        'L1-dcache-loads', 'L1-dcache-stores', 'L1-icache-load-misses',
-        'LLC-loads', 'LLC-stores', 'branch-load-misses',
-        'dTLB-load-misses', 'dTLB-loads', 'dTLB-store-misses',
-        'dTLB-stores', 'iTLB-load-misses'
+        'cache-misses', 'cpu-cycles', 'instructions', 
+        'L1-dcache-loads', 'L1-dcache-stores', 'LLC-loads',  
+        'LLC-stores', 'dTLB-load-misses', 'iTLB-load-misses'
     ]
 
     with open(output_file, 'w', newline='') as f:  # 打开输出文件

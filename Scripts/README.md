@@ -44,12 +44,11 @@
 
 ## 性能计数器事件
 
-脚本采集20种硬件性能计数器事件，包括：
-- 分支指令相关(branch-instructions, branch-misses等)
-- 缓存访问相关(cache-misses, cache-references等) 
-- CPU周期相关(cpu-cycles, ref-cycles等)
-- 内存访问相关(L1-dcache-loads, LLC-loads等)
-- TLB相关(dTLB-loads, iTLB-load-misses等)
+脚本采集12种硬件性能计数器事件，包括：
+['branch-instructions', 'branch-misses', 'bus-cycles',
+'cache-misses', 'cpu-cycles', 'instructions', 
+'L1-dcache-loads', 'L1-dcache-stores', 'LLC-loads',  
+'LLC-stores', 'dTLB-load-misses', 'iTLB-load-misses']
 
 详细的事件列表请参考 `HPC_EVENTS.csv`。
 

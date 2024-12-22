@@ -61,26 +61,10 @@ def process_folder(input_dirs, output_file):
     """处理文件夹中的所有HPC数据文件并生成CSV"""
     # 20个HPC特征
     hpc_events = [
-        "branch-instructions",
-        "branch-misses",
-        "cache-misses",
-        "cache-references",
-        "cpu-cycles",
-        "instructions",
-        "ref-cycles",
-        "L1-dcache-load-misses",
-        "L1-dcache-loads",
-        "L1-dcache-stores",
-        "L1-icache-load-misses",
-        "LLC-load-misses",
-        "LLC-loads",
-        "LLC-store-misses",
-        "LLC-stores",
-        "branch-load-misses",
-        "dTLB-load-misses",
-        "dTLB-loads",
-        "iTLB-load-misses",
-        "iTLB-loads"
+        'branch-instructions', 'branch-misses', 'bus-cycles',
+        'cache-misses', 'cpu-cycles', 'instructions', 
+        'L1-dcache-loads', 'L1-dcache-stores', 'LLC-loads',  
+        'LLC-stores', 'dTLB-load-misses', 'iTLB-load-misses'
     ]
     
     all_data = {}  # 存储所有数据的字典

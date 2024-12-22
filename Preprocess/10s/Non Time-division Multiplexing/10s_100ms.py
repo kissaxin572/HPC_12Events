@@ -57,12 +57,10 @@ def parse_hpc_file(file_path):
 def process_folder(input_dirs, output_file):
     """处理文件夹中的所有HPC数据文件并生成CSV"""
     hpc_events = [  # 定义HPC事件列表
-        "branch-instructions", "branch-misses", "bus-cycles", "cache-misses",
-        "cache-references", "cpu-cycles", "instructions", "ref-cycles",
-        "L1-dcache-load-misses", "L1-dcache-loads", "L1-dcache-stores",
-        "L1-icache-load-misses", "LLC-loads", "LLC-stores", "branch-load-misses",
-        "dTLB-load-misses", "dTLB-loads", "dTLB-store-misses", "dTLB-stores",
-        "iTLB-load-misses"
+        'branch-instructions', 'branch-misses', 'bus-cycles',
+        'cache-misses', 'cpu-cycles', 'instructions', 
+        'L1-dcache-loads', 'L1-dcache-stores', 'LLC-loads',  
+        'LLC-stores', 'dTLB-load-misses', 'iTLB-load-misses'
     ]
     
     all_data = {}  # 初始化所有数据字典
