@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # 环境变量定义
-readonly RESULT_PATH="/home/ubuntu20/Workspace/Datasets/Original/10s/20_per_1_time"  # 结果保存路径
+readonly RESULT_PATH="/home/ubuntu20/Workspace/Datasets/12Events/10s/20_per_1_time"  # 结果保存路径
 readonly ELF_PATH_CONTAINER="/Datasets/malwares/Valid_ELF_20200405"  # 容器内ELF文件路径
 readonly ELF_PATH_LOCAL="/home/ubuntu20/Workspace/Datasets/malwares/virus"  # 本地ELF文件路径
 readonly PURE_ELF_PATH="/home/ubuntu20/Workspace/Datasets/malwares/pure_Valid_ELF_20200405"  # 纯净ELF文件路径
 readonly BENIGN_PATH="/home/ubuntu20/Workspace/Datasets/Benign_Software.txt"  # 良性软件列表路径
 readonly IMAGE_NAME="pure_ubuntu20"  # Docker镜像名称
 readonly CONTAINER_NAME="base"  # Docker容器名称
+
 # 定义需要收集的所有硬件性能计数器事件,包括分支指令、缓存访问、TLB等
-readonly EVENTS="branch-instructions,branch-misses,bus-cycles,cache-misses,cache-references,cpu-cycles,instructions,ref-cycles,L1-dcache-load-misses,L1-dcache-loads,L1-dcache-stores,L1-icache-load-misses,LLC-loads,LLC-stores,branch-load-misses,dTLB-load-misses,dTLB-loads,dTLB-store-misses,dTLB-stores,iTLB-load-misses"
+readonly EVENTS=("branch-instructions" "branch-misses" "bus-cycles" "cache-misses" "cpu-cycles" "instructions" "L1-dcache-loads" "L1-dcache-stores" "LLC-loads" "LLC-stores" "dTLB-load-misses" "iTLB-load-misses")
 
 # 日志输出函数,输出带时间戳的日志信息
 log_msg() {

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 环境变量定义
-readonly RESULT_PATH="/home/ubuntu20/Workspace/Datasets/Original/30s/4_per_5_times"  # 结果保存路径
+readonly RESULT_PATH="/home/ubuntu20/Workspace/Datasets/12Events/30s/4_per_5_times"  # 结果保存路径
 readonly ELF_PATH_CONTAINER="/Datasets/malwares/Valid_ELF_20200405"  # 容器内ELF文件路径
 readonly ELF_PATH_LOCAL="/home/ubuntu20/Workspace/Datasets/malwares/virus"  # 本地ELF文件路径
 readonly PURE_ELF_PATH="/home/ubuntu20/Workspace/Datasets/malwares/pure_Valid_ELF_20200405"  # 纯净ELF文件路径
@@ -10,7 +10,7 @@ readonly IMAGE_NAME="pure_ubuntu20"  # Docker镜像名称
 readonly CONTAINER_NAME="base"  # Docker容器名称
 
 # 定义需要收集的所有硬件性能计数器事件数组
-readonly EVENTS=("branch-instructions" "branch-misses" "bus-cycles" "cache-misses" "cache-references" "cpu-cycles" "instructions" "ref-cycles" "L1-dcache-load-misses" "L1-dcache-loads" "L1-dcache-stores" "L1-icache-load-misses" "LLC-loads" "LLC-stores" "branch-load-misses" "dTLB-load-misses" "dTLB-loads" "dTLB-store-misses" "dTLB-stores" "iTLB-load-misses")
+readonly EVENTS=("branch-instructions" "branch-misses" "bus-cycles" "cache-misses" "cpu-cycles" "instructions" "L1-dcache-loads" "L1-dcache-stores" "LLC-loads" "LLC-stores" "dTLB-load-misses" "iTLB-load-misses")
 
 # 日志输出函数,输出带时间戳的日志信息
 log_msg() {
@@ -97,7 +97,7 @@ run_ELF() {
     
     # 遍历所有恶意软件样本
     for file in "${elf_files[@]}"; do
-        for i in {0..4}; do
+        for i in {0..2}; do
             local ii=$((i*4))
             # 将样本从纯净目录复制到本地目录
             cp "${PURE_ELF_PATH}/${file}" "${ELF_PATH_LOCAL}/${file}"
@@ -124,7 +124,7 @@ run_benign() {
     
     # 遍历所有良性软件命令
     for file in "${benign_files[@]}"; do
-        for i in {0..4}; do
+        for i in {0..2}; do
             local ii=$((i*4))
             log_msg "开始运行良性软件 ${file}. 保存路径:${RESULT_PATH}/B_${file_index}_${i}.txt 间隔:${interval_cmd} 持续时间:${duration_time} 事件:${EVENTS[@]:i:4}"
             get_data "${interval_cmd}" "${path}/B_${file_index}_${i}.txt" "/bin/bash -c '${file}'" "${duration_time}" "$ii"
